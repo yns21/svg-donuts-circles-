@@ -1,0 +1,22 @@
+<svg [attr.width]="size" [attr.height]="size">
+ <defs> 
+<radialGradient id="rgrad" cx="50%" cy="50%" r="75%" > 
+<stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+<stop offset="17%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+<stop offset="32%" style="stop-color:rgb(0,255,0);stop-opacity:1" />
+<stop offset="52%" style="stop-color:rgb(0,0,255);stop-opacity:1" />
+<stop offset="68%" style="stop-color:rgb(255,0,255);stop-opacity:1" />
+<stop offset="96%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+<stop offset="100%" style="stop-color:rgb(255,148,148);stop-opacity:1" />
+</radialGradient> 
+
+</defs>
+<filter id="filter" x="0" y="0" [attr.width]="size" [attr.height]="size" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">
+	<feDropShadow stdDeviation="5 5" in="SourceGraphic" dx="10" dy="10" flood-color="#1F3646" flood-opacity="1" x="0%" y="0%" [attr.width]="size" [attr.height]="size" result="dropShadow"/>
+</filter>
+	<circle *ngFor="let circle of circles" viewBox="0 0 100% 100%" cy="50%" cx="50%" [attr.r]="circle.radius+'%'" [attr.stroke-width]="circle.thickness+'%'"
+	 [attr.stroke-dashoffset]="circle.stroke_dashoffset +'%'" [attr.stroke-dasharray]="circle.stroke_dasharray" 
+   stroke="red" fill="none"
+	 filter="url(#filter)" />
+[attr.stroke]="circle.color"
+</svg>
