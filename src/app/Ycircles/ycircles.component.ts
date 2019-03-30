@@ -12,8 +12,8 @@ export class YcirclesComponent implements OnInit {
   //default  0deg
   @Input() startPosition: StartPosition = StartPosition.pos0;
   @Input() fixedRadius: boolean = true;
-  @Input() typeRadius: string ="inner";
-  @Input() size: string ="100px";
+  @Input() typeRadius: string = "inner";
+  @Input() size: number;
   ngOnInit() {
     this.PushCricles();
   }
@@ -23,7 +23,7 @@ export class YcirclesComponent implements OnInit {
     for (let i = 0; i < this.circles.length; i++) {
 
       if (this.fixedRadius) {
-        this.circles[i].SetRadius(Math.max(...this.circles.map(o => o.thickness), 0),this.typeRadius); 
+        this.circles[i].SetRadius(Math.max(...this.circles.map(o => o.thickness), 0), this.typeRadius);
       }
       // position the first element according to the start position
       if (i == 0) {
@@ -35,17 +35,23 @@ export class YcirclesComponent implements OnInit {
 
             // remove 1 in the end of the frist circle
             this.circles[0].perc -= 1;
-            console.log("--crile  0", this.circles[0]);
+
           }
           // dont remove gap if there is juste a one circle
           if (i >= 1) {
 
             this.circles[i].perc -= 1;
-            console.log("--crile  0", this.circles[i]);
+
           }
+          this.circles[i].SetStroke_dashoffset(
+            this.circles[i - 1].stroke_dashoffset / this.circles[i - 1].perimeter - (this.circles[i - 1].perc + 1) / 100);
+
         }
-        this.circles[i].SetStroke_dashoffset(
-          this.circles[i - 1].stroke_dashoffset / this.circles[i - 1].perimeter - (this.circles[i - 1].perc + 1) / 100);
+        else {
+          this.circles[i].SetStroke_dashoffset(
+            this.circles[i - 1].stroke_dashoffset / this.circles[i - 1].perimeter - (this.circles[i - 1].perc) / 100);
+
+        }
       }
     }
 

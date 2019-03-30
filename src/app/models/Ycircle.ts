@@ -42,13 +42,13 @@ export class Ycircle {
 
     //  outer
     if (type == "outer")
-      this.radius = (100 + this.thickness - 2 * maxThickness) / 2;
+      this.radius = (90 + this.thickness - 2 * maxThickness) / 2;
     // inner
     if (type == "inner")
-      this.radius = (100 - this.thickness) / 2;
+      this.radius = (90 - this.thickness) / 2;
     //middle
     if (type == "middle")
-      this.radius = (100 - maxThickness) / 2;
+      this.radius = (90 - maxThickness) / 2;
   }
 }
 export enum StartPosition { pos0, pos90, pos180, pos270 }

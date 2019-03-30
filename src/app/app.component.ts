@@ -9,10 +9,12 @@ import { Ycircle } from './models/Ycircle';
 export class AppComponent {
   name = 'Angular';
   perc = 10;
-  thickness = 40;
-  size = "350px";
+  thickness = 20;
+  size = "350";
   circles: Ycircle[] = [
     // perc ; thickness ; color
+    // this colors are not used ,instead a radial gradient is applied 
+    // you can change it in ycircle html component at stroke circle's value
     new Ycircle(this.perc, this.thickness, "#ff0303"),
     new Ycircle(this.perc, this.thickness, "blue"),
     new Ycircle(this.perc, this.thickness, "#37ff00"),
