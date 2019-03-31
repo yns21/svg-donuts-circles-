@@ -1,25 +1,45 @@
 
+import { BehaviorSubject } from "rxjs";
+import { ChangeDetectorRef } from "@angular/core";
+
+
+
 export class Ycircle {
 
   /** params: percentage, thickness */
   constructor(perc: number, thickness: number, color: string) {
-    this.perc = perc;
+    this.SetPerc(perc, true);
     this.thickness = thickness;
     this.color = color;
   }
 
   //------------------------------parameters---------------------------
   // percentage (0-100%)
-  perc: number;
+  private _perc;
+
+  perc$: BehaviorSubject<any> = new BehaviorSubject<any>(0);
+
   color: string = "black";
   // stroke  must be <= 50%
   private _thickness: number;
   set thickness(value) {
-    if (value <= 50) this._thickness = value;
-    else this._thickness = 50;
+    if (value <= 50) this._thickness = value *45/50;
+    else this._thickness = 45;
   }
   get thickness() { return this._thickness; }
+  get perc(): number {
+    return this._perc;
+  }
+set perc(value){
+ this.SetPerc(value,true);
+}
 
+  public SetPerc(value: number, next: boolean) {
+
+    this._perc = value;
+    if (next) this.perc$.next(value);
+    console.log(value);
+  }
   //------------------------------internal logic---------------------------
 
   private radius: number;
@@ -31,6 +51,9 @@ export class Ycircle {
   get stroke_dashoffset(): number { return this._stroke_dashOffset }
 
   private get stroke_dasharray() {
+
+    if(this.perc <= 0) 
+    return " 0 100";
     return "" + this.perc * this.perimeter / 100 + "% " + (this.perimeter / 100 * (100 - this.perc)) + "%";
   }
 

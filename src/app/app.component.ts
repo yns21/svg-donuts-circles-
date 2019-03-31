@@ -15,18 +15,10 @@ export class AppComponent {
     // perc ; thickness ; color
     // this colors are not used ,instead a radial gradient is applied 
     // you can change it in ycircle html component at stroke circle's value
-    new Ycircle(this.perc, this.thickness, "#ff0303"),
-    new Ycircle(this.perc, this.thickness, "blue"),
-    new Ycircle(this.perc, this.thickness, "#37ff00"),
-    new Ycircle(this.perc, this.thickness, "#15ffc5"),
-    new Ycircle(this.perc, this.thickness, "rgba(1,250,5,0.7)"),
-    new Ycircle(this.perc, this.thickness, "#eee"),
-    new Ycircle(this.perc, this.thickness, "#ff0303"),
-    new Ycircle(this.perc, this.thickness, "#ff00d0"),
-    new Ycircle(this.perc, this.thickness, "#37ff00"),
-    new Ycircle(this.perc, this.thickness, "rgba(0,150,120,0.7)"),
-
-
+    new Ycircle(50, 10, "#ff0303"),
+    new Ycircle(15, 20, "blue"),
+    new Ycircle(10, 15, "#37ff00"),
+    new Ycircle(5, 10, "#15ffc5")
 
   ]
 

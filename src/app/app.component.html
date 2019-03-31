@@ -1,8 +1,11 @@
 <h1 style="text-align: center">enjoy !!</h1>
 
 
+
 <div align="center">
    
-    <Ycircles [size]="size" [circles]="circles" [startPosition]="1" [withGaps]="true" typeRadius="inner"></Ycircles>
+    <Ycircles [size]="size" [circles]="circles" [startPosition]="1" [withGaps]="true" typeRadius="outer"></Ycircles>
 
 </div>
+<input type="range" min="0" [(ngModel)]="circles[0].perc" max="100"/>
+<input type="range" min="0"  [(ngModel)]="circles[1].perc" max="100"/>
