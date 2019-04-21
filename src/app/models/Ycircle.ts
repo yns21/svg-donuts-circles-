@@ -54,6 +54,7 @@ set perc(value){
 
     if(this.perc <= 0) 
     return " 0 100";
+    
     return "" + this.perc * this.perimeter / 100 + "% " + (this.perimeter / 100 * (100 - this.perc)) + "%";
   }
 

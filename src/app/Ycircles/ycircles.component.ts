@@ -80,7 +80,7 @@ export class YcirclesComponent implements OnInit {
 
         if (this.withGaps) {
           if (i == 1) {
-
+            if( this.circles[0].perc!=100)
             // remove 1 in the end of the frist circle
             this.circles[0].SetPerc(this.circles[0].perc - 1, false);
 
@@ -89,7 +89,7 @@ export class YcirclesComponent implements OnInit {
           // dont remove gap if there is juste a one circle
           if (i >= 1) {
 
-            this.circles[i].SetPerc(this.circles[i].perc - 1, false);
+            this.circles[i].SetPerc(this.circles[i].perc , false);
 
           }
           this.circles[i].SetStroke_dashoffset(
